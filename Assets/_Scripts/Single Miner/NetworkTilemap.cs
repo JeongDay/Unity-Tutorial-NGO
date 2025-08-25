@@ -4,10 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class NetworkTilemap : NetworkBehaviour
 {
-    [SerializeField] private GameObject[] minerals;
+    [SerializeField] private GameObject[] minerals; // 생성할 광물
 
     private Tilemap tilemap;
 
+    // 파괴된 Tile의 Position을 저장하고 있는 동기화용 List
     private NetworkList<Vector3Int> destroyedTiles = new  NetworkList<Vector3Int>();
     
     void Awake()
@@ -21,6 +22,7 @@ public class NetworkTilemap : NetworkBehaviour
 
         destroyedTiles.OnListChanged += OnTileDestroyed;
 
+        // 늦게 들어온 Client에게 이미 파괴된 Tile을 동기화 해주기 위한 기능
         foreach (var tilePos in destroyedTiles)
         {
             tilemap.SetTile(tilePos, null);
@@ -34,12 +36,11 @@ public class NetworkTilemap : NetworkBehaviour
         
         Vector3Int cellPos = tilemap.WorldToCell(hitPos);
         
+        // 30% 확률의 랜덤 광물 드랍
         int ranItemDrop = Random.Range(0, 101);
         if (ranItemDrop >= 70)
         {
             int ranIndex = Random.Range(0, minerals.Length);
-
-            // NetworkObject.Instantiate(minerals[ranIndex], cellPos, Quaternion.identity);
             
             GameObject mineral = Instantiate(minerals[ranIndex], cellPos, Quaternion.identity);
             mineral.GetComponent<NetworkObject>().Spawn();
@@ -51,6 +52,7 @@ public class NetworkTilemap : NetworkBehaviour
         }
     }
 
+    // 특정 위치가 파괴될 대상으로 Add된 경우, 해당 Tile을 삭제하는 기능 실행
     private void OnTileDestroyed(NetworkListEvent<Vector3Int> changeEvent)
     {
         if (changeEvent.Type == NetworkListEvent<Vector3Int>.EventType.Add)
