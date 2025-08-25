@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &510082390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +874,7 @@ GameObject:
   - component: {fileID: 1803998447}
   - component: {fileID: 1803998449}
   - component: {fileID: 1803998448}
+  - component: {fileID: 1803998451}
   - component: {fileID: 1803998450}
   m_Layer: 6
   m_Name: Tilemap
@@ -36365,12 +36366,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a530f9ff9e140b799c6c7106f223608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   minerals:
   - {fileID: 949846217006461352, guid: 56db31e44baf9a746b2bd491ab746fe7, type: 3}
   - {fileID: 949846217006461352, guid: fcde8135b8fa8d44482144fde69eb965, type: 3}
   - {fileID: 949846217006461352, guid: 543875937efe51342b94c06e23dc7e64, type: 3}
   - {fileID: 949846217006461352, guid: 75a4eebdeb5793d40b928c0c8678e8d3, type: 3}
   - {fileID: 949846217006461352, guid: 4d0c82c2b5643a84ca838a840f108db6, type: 3}
+--- !u!114 &1803998451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803998443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3332687057
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &2120065957
 GameObject:
   m_ObjectHideFlags: 0
@@ -36380,14 +36407,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120065958}
-  - component: {fileID: 2120065959}
+  - component: {fileID: 2120065960}
+  - component: {fileID: 2120065961}
   m_Layer: 0
   m_Name: Score Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2120065958
 Transform:
   m_ObjectHideFlags: 0
@@ -36403,7 +36431,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120065959
+--- !u!114 &2120065960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36412,9 +36440,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120065957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f74ed743af45718e3fb9b563a61c5a, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 469884734
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &2120065961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120065957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92c33dcda0e4269a20ed098daa7895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   scoreUI: {fileID: 428070064}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

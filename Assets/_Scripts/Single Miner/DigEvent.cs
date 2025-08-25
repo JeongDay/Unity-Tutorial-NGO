@@ -1,25 +1,26 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class DigEvent : MonoBehaviour
 {
-    [SerializeField] private NetworkTilemap tilemap;
+    private NetworkTilemap networkTilemap; 
     [SerializeField] private LayerMask tileLayer;
     [SerializeField] private Transform[] hitPoints;
 
     void Awake()
     {
-        tilemap = FindFirstObjectByType<NetworkTilemap>();
+        networkTilemap = FindFirstObjectByType<NetworkTilemap>();
     }
     
     public void OnDig()
     {
         for (int i = 0; i < hitPoints.Length; i++)
         {
-            Collider2D coll = Physics2D.OverlapCircle(hitPoints[i].position, 0.25f, tileLayer);
+            Collider2D coll = Physics2D.OverlapCircle(hitPoints[i].position, 0.1f, tileLayer);
 
             if (coll != null)
             {
-                tilemap.RemoveTile(hitPoints[i].position);
+                networkTilemap.RemoveTile(hitPoints[i].position);
                 
                 break;
             }

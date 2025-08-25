@@ -1,21 +1,20 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class MineralEvent : MonoBehaviour
+public class MineralEvent : NetworkBehaviour
 {
-    private MinerScoreManager scoreManager;
-    
-    void Start()
-    {
-        scoreManager = FindFirstObjectByType<MinerScoreManager>();
-    }
-    
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag("Player") && IsOwner)
         {
-            Debug.Log("광물 획득");
-            scoreManager.AddScore();
-            gameObject.SetActive(false);
+            AddScoreServerRpc();
         }
+    }
+
+    [ServerRpc]
+    private void AddScoreServerRpc()
+    {
+        NetworkScoreManager.Instance.AddScore();
+        GetComponent<NetworkObject>().Despawn();
     }
 }
